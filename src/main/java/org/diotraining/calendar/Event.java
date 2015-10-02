@@ -6,6 +6,7 @@ import java.util.UUID;
 
 public class Event {
     private final String description;
+    private final String title;
     private final List<String> attenders;
     private final Date startDate;
     private final Date endDate;
@@ -13,6 +14,7 @@ public class Event {
 
     private Event(Builder builder){
         this.description = builder.description;
+        this.title = builder.title;
         this.attenders = builder.attenders;
         this.startDate = builder.startDate;
         this.endDate = builder.endDate;
@@ -21,6 +23,10 @@ public class Event {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public List<String> getAttenders() {
@@ -47,6 +53,7 @@ public class Event {
         Event event = (Event) o;
 
         if (description != null ? !description.equals(event.description) : event.description != null) return false;
+        if (title != null ? !title.equals(event.title) : event.title != null) return false;
         if (attenders != null ? !attenders.equals(event.attenders) : event.attenders != null) return false;
         if (startDate != null ? !startDate.equals(event.startDate) : event.startDate != null) return false;
         if (endDate != null ? !endDate.equals(event.endDate) : event.endDate != null) return false;
@@ -57,6 +64,7 @@ public class Event {
     @Override
     public int hashCode() {
         int result = description != null ? description.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (attenders != null ? attenders.hashCode() : 0);
         result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
         result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
@@ -66,8 +74,9 @@ public class Event {
 
     @Override
     public String toString() {
-        return "org.diotraining.calendar.Event{" +
+        return "Event{" +
                 "description='" + description + '\'' +
+                ", title='" + title + '\'' +
                 ", attenders=" + attenders +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
@@ -76,6 +85,7 @@ public class Event {
     }
 
     public static class Builder{
+        private String title;
         private String description;
         private List<String> attenders;
         private Date startDate;
@@ -85,10 +95,17 @@ public class Event {
         public Builder(){}
 
         public Builder(Event origin){
+            this.title = origin.title;
             this.description = origin.description;
             this.attenders = origin.attenders;
             this.startDate = origin.startDate;
+            this.endDate = origin.endDate;
             this.id = origin.id;
+        }
+
+        public Builder title(String title){
+            this.title = title;
+            return this;
         }
 
         public Builder description(String description){
