@@ -7,7 +7,7 @@ import java.util.UUID;
 public class Event {
     private final String description;
     private final String title;
-    private final List<String> attenders;
+    private final List<Person> attenders;
     private final Date startDate;
     private final Date endDate;
     private final UUID id;
@@ -29,7 +29,7 @@ public class Event {
         return title;
     }
 
-    public List<String> getAttenders() {
+    public List<Person> getAttenders() {
         return attenders;
     }
 
@@ -87,7 +87,7 @@ public class Event {
     public static class Builder{
         private String title;
         private String description;
-        private List<String> attenders;
+        private List<Person> attenders;
         private Date startDate;
         private Date endDate;
         private UUID id;
@@ -113,7 +113,7 @@ public class Event {
             return this;
         }
 
-        public Builder attenders(List<String> attenders){
+        public Builder attenders(List<Person> attenders){
             this.attenders = attenders;
             return this;
         }
