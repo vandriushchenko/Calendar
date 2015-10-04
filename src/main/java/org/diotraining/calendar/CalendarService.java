@@ -1,17 +1,19 @@
 package org.diotraining.calendar;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 public interface CalendarService {
 
     void addEvent(Event event);
 
-    void createEvent(String title, List<String> emails);
+    void createEvent(String title, List<Person> emails);
 
     Event searchEvent(String title);
 
-    List<Event> search(Calendar date);
+    Set<Event> search(LocalDateTime date);
 
     List<Calendar[]> checkAvailability(Person ... persons);
 }
