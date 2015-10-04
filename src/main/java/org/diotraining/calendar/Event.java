@@ -1,5 +1,6 @@
 package org.diotraining.calendar;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -8,8 +9,8 @@ public class Event {
     private final String description;
     private final String title;
     private final List<Person> attenders;
-    private final Date startDate;
-    private final Date endDate;
+    private final LocalDateTime startDate;
+    private final LocalDateTime endDate;
     private final UUID id;
 
     private Event(Builder builder){
@@ -33,11 +34,11 @@ public class Event {
         return attenders;
     }
 
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
@@ -88,8 +89,8 @@ public class Event {
         private String title;
         private String description;
         private List<Person> attenders;
-        private Date startDate;
-        private Date endDate;
+        private LocalDateTime startDate;
+        private LocalDateTime endDate;
         private UUID id;
 
         public Builder(){}
@@ -118,12 +119,12 @@ public class Event {
             return this;
         }
 
-        public Builder startDate(Date startDate){
+        public Builder startDate(LocalDateTime startDate){
             this.startDate = startDate;
             return this;
         }
 
-        public Builder endDate(Date endDate){
+        public Builder endDate(LocalDateTime endDate){
             this.endDate = endDate;
             return this;
         }
