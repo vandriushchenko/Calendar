@@ -5,13 +5,13 @@ import java.util.List;
 
 public interface CalendarService {
 
-    public void addEvent(Event event);
+    void addEvent(Event event);
 
-    public void createEvent(String title, List<String> emails);
+    void createEvent(String title, List<String> emails);
 
-    public Event searchEvent(String title);
+    Event searchEvent(String title);
 
-    public List<Event> search(Calendar date);
+    List<Event> search(Calendar date);
 
-    public List<Calendar[]> checkAvailability(Person ... persons);
+    List<Calendar[]> checkAvailability(Person ... persons);
 }
