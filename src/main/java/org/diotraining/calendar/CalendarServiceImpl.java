@@ -14,7 +14,7 @@ public class CalendarServiceImpl implements CalendarService{
         events.add(event);
     }
 
-    public void createEvent(String title, List<Person> emails) {
+    public void createEvent(String title, List<Attender> emails) {
         events.add(new Event.Builder().title(title).attenders(emails).build());
     }
 
@@ -30,7 +30,7 @@ public class CalendarServiceImpl implements CalendarService{
         return events.stream().filter(event -> date.compareTo(event.getStartDate()) >= 0 && date.compareTo(event.getEndDate()) <= 0).collect(Collectors.toSet());
     }
 
-    public List<Calendar[]> checkAvailability(Person... persons) {
+    public List<Calendar[]> checkAvailability(Attender... persons) {
         return null;
     }
 
