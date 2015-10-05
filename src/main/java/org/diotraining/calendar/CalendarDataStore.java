@@ -31,6 +31,19 @@ public class CalendarDataStore {
         return eventsSet.stream().filter(event -> date.compareTo(event.getStartDate()) >= 0 && date.compareTo(event.getEndDate()) <= 0).collect(Collectors.toSet());
     }
 
+    public void createEvent(String title, String description, List<Attender> attenders, LocalDateTime startDate, LocalDateTime endDate){
+        addEvent(new Event.Builder()
+                .title(title)
+                .description(description)
+                .attenders(attenders)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build());
+    }
+
+
+
+
     private void addTitleMapping(Event event) {
         if (titleWithId.containsKey(event.getTitle())) {
             List<UUID> id = new ArrayList<>(titleWithId.get(event.getTitle()));

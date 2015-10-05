@@ -2,7 +2,6 @@ package org.diotraining.calendar;
 
 import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -33,5 +32,7 @@ public class CalendarServiceImpl implements CalendarService{
         return null;
     }
 
-
+    public void createEvent(String title, String description, List<Attender> attenders, LocalDateTime startDate, LocalDateTime endDate) {
+        calendarDataStore.createEvent(title, description, attenders, startDate, endDate);
+    }
 }

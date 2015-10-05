@@ -15,5 +15,7 @@ public interface CalendarService {
 
     Set<Event> getEventsForSpecificDate(LocalDateTime date);
 
-    List<Calendar[]> checkAvailability(Attender ... persons);
+    void createEvent(String title, String description, List<Attender> attenders, LocalDateTime startDate, LocalDateTime endDate);
+
+    List<Calendar[]> checkAvailability(Attender... persons);
 }
