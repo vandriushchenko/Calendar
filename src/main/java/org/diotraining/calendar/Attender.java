@@ -1,8 +1,9 @@
 package org.diotraining.calendar;
 
-public class Attender implements Comparable<Attender>{
+public class Attender implements Comparable<Attender> {
     private final String name;
     private final String surname;
+    private final String email;
 
     @Override
     public String toString() {
@@ -13,7 +14,7 @@ public class Attender implements Comparable<Attender>{
                 '}';
     }
 
-    private final String email;
+
 
     @Override
     public boolean equals(Object o) {
