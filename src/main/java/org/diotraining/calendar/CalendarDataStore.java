@@ -1,5 +1,6 @@
 package org.diotraining.calendar;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,6 +24,11 @@ public class CalendarDataStore {
         }
         return eventsByTitle;
 
+    }
+
+    public Set<Event> getEventsForSpecificDate(LocalDateTime date) {
+        Set<Event> eventsSet = new HashSet<>(events.values());
+        return eventsSet.stream().filter(event -> date.compareTo(event.getStartDate()) >= 0 && date.compareTo(event.getEndDate()) <= 0).collect(Collectors.toSet());
     }
 
     private void addTitleMapping(Event event) {

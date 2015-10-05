@@ -11,9 +11,9 @@ public interface CalendarService {
 
     void createEvent(String title, List<Attender> emails);
 
-    Event searchEvent(String title);
+    List<Event> getEventsByTitle(String title);
 
-    Set<Event> search(LocalDateTime date);
+    Set<Event> getEventsForSpecificDate(LocalDateTime date);
 
     List<Calendar[]> checkAvailability(Attender ... persons);
 }
