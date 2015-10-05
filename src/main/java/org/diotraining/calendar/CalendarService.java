@@ -9,8 +9,6 @@ public interface CalendarService {
 
     void addEvent(Event event);
 
-    void createEvent(String title, List<Attender> emails);
-
     List<Event> getEventsByTitle(String title);
 
     Set<Event> getEventsForSpecificDate(LocalDateTime date);

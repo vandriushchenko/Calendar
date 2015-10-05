@@ -16,8 +16,8 @@ public class CalendarServiceImpl implements CalendarService{
         calendarDataStore.addEvent(event);
     }
 
-    public void createEvent(String title, List<Attender> emails) {
-//        events.add(new Event.Builder().title(title).attenders(emails).build());
+    public void createEvent(String title, String description, List<Attender> attenders, LocalDateTime startDate, LocalDateTime endDate) {
+        calendarDataStore.createEvent(title, description, attenders, startDate, endDate);
     }
 
     public List<Event> getEventsByTitle(String title) {
@@ -32,7 +32,4 @@ public class CalendarServiceImpl implements CalendarService{
         return null;
     }
 
-    public void createEvent(String title, String description, List<Attender> attenders, LocalDateTime startDate, LocalDateTime endDate) {
-        calendarDataStore.createEvent(title, description, attenders, startDate, endDate);
-    }
 }
