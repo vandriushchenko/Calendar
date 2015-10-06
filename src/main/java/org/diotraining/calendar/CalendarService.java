@@ -9,11 +9,11 @@ public interface CalendarService {
 
     void addEvent(Event event);
 
-    void createEvent(String title, List<Attender> emails);
-
     List<Event> getEventsByTitle(String title);
 
     Set<Event> getEventsForSpecificDate(LocalDateTime date);
 
-    List<Calendar[]> checkAvailability(Attender ... persons);
+    void createEvent(String title, String description, List<Attender> attenders, LocalDateTime startDate, LocalDateTime endDate);
+
+    List<Calendar[]> checkAvailability(Attender... persons);
 }

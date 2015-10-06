@@ -10,7 +10,7 @@ public class Event {
     private final List<Attender> attenders;
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
-    private final UUID id;
+    private final UUID id = UUID.randomUUID();
 
     private Event(Builder builder){
         this.description = builder.description;
@@ -18,7 +18,6 @@ public class Event {
         this.attenders = builder.attenders;
         this.startDate = builder.startDate;
         this.endDate = builder.endDate;
-        this.id = builder.id;
     }
 
     public String getDescription() {
