@@ -1,5 +1,8 @@
 package org.diotraining.calendar;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +21,8 @@ public class Main {
         Event event1 = new Event.Builder().title("developers' code review").startDate(LocalDateTime.of(2015, 10, 10, 15, 0)).endDate(LocalDateTime.of(2015, 10, 10, 16, 0)).attenders(devs).build();
         Event event2 = new Event.Builder().title("qas' code review").startDate(LocalDateTime.of(2015, 10, 11, 15, 0)).endDate(LocalDateTime.of(2015, 10, 11, 16, 0)).attenders(qas).build();
         Event event3 = new Event.Builder().title("daily stand-up").startDate(LocalDateTime.of(2015, 10, 11, 12, 0)).endDate(LocalDateTime.of(2015, 10, 11, 12, 20)).attenders(team).build();
-        CalendarDataStore dataStore = new CalendarDataStore();
-        CalendarService calendarService = new CalendarServiceImpl(dataStore);
+        ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"services.xml", "daos.xml"});
+        CalendarService calendarService = context.getBean("calendarService", CalendarServiceImpl.class);
         calendarService.addEvent(event1);
         calendarService.addEvent(event2);
         System.out.println(calendarService.getEventsByTitle("developers' code review"));
