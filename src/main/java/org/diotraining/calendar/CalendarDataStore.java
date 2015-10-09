@@ -9,6 +9,17 @@ public class CalendarDataStore {
     private Map<String, List<UUID>> titleWithId = new HashMap<>();
     private Map<UUID, Event> events = new HashMap<>();
 
+    Map<UUID, List<String>> getIdWithEmails() {
+        return idWithEmails;
+    }
+
+    Map<String, List<UUID>> getTitleWithId() {
+        return titleWithId;
+    }
+
+    Map<UUID, Event> getEvents() {
+        return events;
+    }
 
     public void addEvent(Event event) {
         events.put(event.getId(), event);
