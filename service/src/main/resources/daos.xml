@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="calendarService" class="org.diotraining.calendar.CalendarServiceImpl">
-        <constructor-arg ref="calendarDataStore"/>
+    <bean id="calendarDataStore"
+          class="main.java.org.diotraining.calendar.CalendarDataStore">
     </bean>
 </beans>
