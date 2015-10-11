@@ -1,14 +1,7 @@
 package org.diotraining.calendar;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import java.io.File;
 import java.io.Serializable;
 
-@XmlRootElement
 public class Attender implements Comparable<Attender>, Serializable {
     private String name;
     private String surname;
@@ -20,13 +13,10 @@ public class Attender implements Comparable<Attender>, Serializable {
         this.email = email;
     }
 
-    public Attender() {}
-
     public String getName() {
         return name;
     }
 
-    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -35,7 +25,6 @@ public class Attender implements Comparable<Attender>, Serializable {
         return surname;
     }
 
-    @XmlElement
     public void setSurname(String surname) {
         this.surname = surname;
     }
@@ -44,7 +33,6 @@ public class Attender implements Comparable<Attender>, Serializable {
         return email;
     }
 
-    @XmlElement
     public void setEmail(String email) {
         this.email = email;
     }
