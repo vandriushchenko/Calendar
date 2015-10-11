@@ -68,6 +68,7 @@ public class Attender implements Comparable<Attender>, Serializable {
         return result;
     }
 
+    //local code review (vtegza): remove or implement @ 12.10.15
     @Override
     public int compareTo(Attender o) {
         return 0;

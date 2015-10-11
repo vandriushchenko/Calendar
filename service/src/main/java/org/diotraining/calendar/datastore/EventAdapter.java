@@ -119,6 +119,7 @@ public class EventAdapter implements Serializable{
                 '}';
     }
 
+    //local code review (vtegza): as extension for the Attender - it is ok, if it is a kind of tets - try to move to the actual test @ 12.10.15
     public static void main(String[] args) {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");

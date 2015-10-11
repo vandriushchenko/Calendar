@@ -27,6 +27,7 @@ public class CalendarDataStore {
         return events;
     }
 
+    //local code review (vtegza): save event as xml file on every add.remove/update @ 12.10.15
     public void addEvent(Event event) {
         events.put(event.getId(), event);
         addTitleMapping(event);
@@ -74,7 +75,10 @@ public class CalendarDataStore {
     private void addEmailsMapping(Event event) {
         if (idWithEmails.containsKey(event.getId())) {
             List<String> emails = new ArrayList<>(idWithEmails.get(event.getId()));
-            emails.addAll(event.getAttenders().stream().map(Attender::getEmail).collect(Collectors.toList()));
+            //local code review (vtegza): break to several lines @ 12.10.15
+            emails.addAll(event.getAttenders().stream()
+                    .map(Attender::getEmail)
+                    .collect(Collectors.toList()));
             idWithEmails.put(event.getId(), emails);
         } else {
             List<String> emails = event.getAttenders().stream().map(Attender::getEmail).collect(Collectors.toList());
