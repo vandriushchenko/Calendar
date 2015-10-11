@@ -7,8 +7,11 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class ClientMain {
+
     public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("clientApplicationContext.xml");
+        CalendarService calendarService = (CalendarService)context.getBean("calendarService");
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");
@@ -20,8 +23,6 @@ public class Main {
         Event event1 = new Event.Builder().title("developers' code review").startDate(LocalDateTime.of(2015, 10, 10, 15, 0)).endDate(LocalDateTime.of(2015, 10, 10, 16, 0)).attenders(devs).build();
         Event event2 = new Event.Builder().title("qas' code review").startDate(LocalDateTime.of(2015, 10, 11, 15, 0)).endDate(LocalDateTime.of(2015, 10, 11, 16, 0)).attenders(qas).build();
         Event event3 = new Event.Builder().title("daily stand-up").startDate(LocalDateTime.of(2015, 10, 11, 12, 0)).endDate(LocalDateTime.of(2015, 10, 11, 12, 20)).attenders(team).build();
-        ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"services.xml", "daos.xml"});
-        CalendarService calendarService = context.getBean("calendarService", CalendarServiceImpl.class);
         calendarService.addEvent(event1);
         calendarService.addEvent(event2);
         System.out.println(calendarService.getEventsByTitle("developers' code review"));

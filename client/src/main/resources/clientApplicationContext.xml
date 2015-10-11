@@ -4,13 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="calendarService" class="org.diotraining.calendar.CalendarServiceImpl">
-        <constructor-arg ref="calendarDataStore"/>
-    </bean>
-    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
-        <property name="serviceName" value="CalendarService"/>
-        <property name="service" ref="calendarService"/>
+    <bean id="calendarService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
         <property name="serviceInterface" value="org.diotraining.calendar.CalendarService"/>
-        <property name="registryPort" value="1199"/>
+        <property name="serviceUrl" value="rmi://localhost:1199/CalendarService"/>
     </bean>
 </beans>

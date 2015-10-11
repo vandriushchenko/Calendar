@@ -1,6 +1,8 @@
 package org.diotraining.calendar;
 
-public class Attender implements Comparable<Attender> {
+import java.io.Serializable;
+
+public class Attender implements Comparable<Attender>, Serializable {
     private final String name;
     private final String surname;
     private final String email;
