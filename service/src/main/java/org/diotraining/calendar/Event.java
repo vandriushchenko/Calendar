@@ -2,6 +2,7 @@ package org.diotraining.calendar;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -90,7 +91,6 @@ public class Event implements Serializable{
         private List<Attender> attenders;
         private LocalDateTime startDate;
         private LocalDateTime endDate;
-        private UUID id;
 
         public Builder(){}
 
@@ -100,7 +100,6 @@ public class Event implements Serializable{
             this.attenders = origin.attenders;
             this.startDate = origin.startDate;
             this.endDate = origin.endDate;
-            this.id = origin.id;
         }
 
         public Builder title(String title){
@@ -128,14 +127,9 @@ public class Event implements Serializable{
             return this;
         }
 
-        public Builder id(UUID id){
-            this.id = id;
-            return this;
-        }
 
         public Event build(){
             return new Event(this);
         }
     }
-
 }

@@ -1,13 +1,31 @@
 package org.diotraining.calendar;
 
+import org.diotraining.calendar.datastore.EventAdapter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 public class ClientMain {
+    static EventAdapter unmarshalEvent(){
+        EventAdapter eventAdapter = null;
+        try {
+            File file = new File("event1.xml");
+            JAXBContext context = JAXBContext.newInstance(EventAdapter.class);
+            Unmarshaller jaxbMarshaller = context.createUnmarshaller();
+            eventAdapter = (EventAdapter) jaxbMarshaller.unmarshal(file);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return eventAdapter;
+    }
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("clientApplicationContext.xml");

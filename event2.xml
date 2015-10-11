@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event id="f6152d81-efa0-43df-b5ba-e038413d4089">
+    <title>qas' code review</title>
+    <startDate>2015-10-11T15:00</startDate>
+    <endDate>2015-10-11T16:00</endDate>
+    <attenders>
+        <attender>
+            <email>ikovalenko@gmail.com</email>
+            <name>Ihor</name>
+            <surname>Kovalenko</surname>
+        </attender>
+        <attender>
+            <email>mmamaev@gmail.com</email>
+            <name>Maxim</name>
+            <surname>Mamaev</surname>
+        </attender>
+    </attenders>
+</event>

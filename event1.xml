@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event id="214fbe05-9b9a-492a-a7c5-95efda1d2204">
+    <title>developers' code review</title>
+    <description>developers' code review</description>
+    <startDate>2015-10-10T15:00</startDate>
+    <endDate>2015-10-10T16:00</endDate>
+    <attenders>
+        <attender>
+            <email>vkosovsky@gmail.com</email>
+            <name>Volodymyr</name>
+            <surname>Kosovsky</surname>
+        </attender>
+        <attender>
+            <email>ahaysan@gmail.com</email>
+            <name>Andriy</name>
+            <surname>Haysan</surname>
+        </attender>
+        <attender>
+            <email>ovelychko@gmail.com</email>
+            <name>Oleksandr</name>
+            <surname>Velychko</surname>
+        </attender>
+    </attenders>
+</event>

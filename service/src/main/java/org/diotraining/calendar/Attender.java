@@ -1,11 +1,53 @@
 package org.diotraining.calendar;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.io.File;
 import java.io.Serializable;
 
+@XmlRootElement
 public class Attender implements Comparable<Attender>, Serializable {
-    private final String name;
-    private final String surname;
-    private final String email;
+    private String name;
+    private String surname;
+    private String email;
+
+    public Attender(String name, String surname, String email) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
+
+    public Attender() {}
+
+    public String getName() {
+        return name;
+    }
+
+    @XmlElement
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    @XmlElement
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    @XmlElement
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
     public String toString() {
@@ -15,8 +57,6 @@ public class Attender implements Comparable<Attender>, Serializable {
                 ", email='" + email + '\'' +
                 '}';
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -40,26 +80,10 @@ public class Attender implements Comparable<Attender>, Serializable {
         return result;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public Attender(String name, String surname, String email) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-    }
-
     @Override
     public int compareTo(Attender o) {
         return 0;
     }
+
+
 }

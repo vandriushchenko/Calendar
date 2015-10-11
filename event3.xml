@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<event id="51295f60-1d6a-4497-be12-e3f6d811a1a0">
+    <title>daily stand-up</title>
+    <startDate>2015-10-11T12:00</startDate>
+    <endDate>2015-10-11T12:20</endDate>
+    <attenders>
+        <attender>
+            <email>vkosovsky@gmail.com</email>
+            <name>Volodymyr</name>
+            <surname>Kosovsky</surname>
+        </attender>
+        <attender>
+            <email>ahaysan@gmail.com</email>
+            <name>Andriy</name>
+            <surname>Haysan</surname>
+        </attender>
+        <attender>
+            <email>ikovalenko@gmail.com</email>
+            <name>Ihor</name>
+            <surname>Kovalenko</surname>
+        </attender>
+        <attender>
+            <email>ovelychko@gmail.com</email>
+            <name>Oleksandr</name>
+            <surname>Velychko</surname>
+        </attender>
+        <attender>
+            <email>mmamaev@gmail.com</email>
+            <name>Maxim</name>
+            <surname>Mamaev</surname>
+        </attender>
+    </attenders>
+</event>
