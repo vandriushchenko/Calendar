@@ -1,7 +1,9 @@
 package org.diotraining.calendar;
 
 //local code review (vtegza): use code formatting @ 11.10.15
-public class Attender implements Comparable<Attender> {
+import java.io.Serializable;
+
+public class Attender implements Comparable<Attender>, Serializable {
     private final String name;
     private final String surname;
     private final String email;
