@@ -16,30 +16,37 @@ import java.util.Set;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@RunWith( MockitoJUnitRunner.class )
+@RunWith(MockitoJUnitRunner.class)
 public class CalendarServiceImplTest {
+
     @Mock
     private CalendarDataStore dataStore;
     private CalendarService calendarService;
 
     @Before
-    public void setup(){
+    public void setup() {
         calendarService = new CalendarServiceImpl(dataStore);
     }
 
     @Test
-    public void testAddEvent(){
+    public void testAddEvent() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");
         List<Attender> devs = Arrays.asList(user1, user2, user3);
-        Event event = new Event.Builder().title("developers' code review").startDate(LocalDateTime.of(2015, 10, 10, 15, 0)).endDate(LocalDateTime.of(2015, 10, 10, 16, 0)).attenders(devs).build();
+        //local code review (vtegza): keep line short @ 11.10.15
+        Event event = new Event.Builder()
+                .title("developers' code review")
+                .startDate(LocalDateTime.of(2015, 10, 10, 15, 0))
+                .endDate(LocalDateTime.of(2015, 10, 10, 16, 0))
+                .attenders(devs)
+                .build();
         calendarService.addEvent(event);
         verify(dataStore).addEvent(event);
     }
 
     @Test
-    public void testCreateEvent(){
+    public void testCreateEvent() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");
@@ -49,13 +56,13 @@ public class CalendarServiceImplTest {
     }
 
     @Test
-    public void testGetEventsByTitleDelegating(){
+    public void testGetEventsByTitleDelegating() {
         calendarService.getEventsByTitle("daily stand-up");
         verify(dataStore).getEventsByTitle("daily stand-up");
     }
 
     @Test
-    public void testGetEventsByTitleReturnsEvents(){
+    public void testGetEventsByTitleReturnsEvents() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");
@@ -63,11 +70,13 @@ public class CalendarServiceImplTest {
         Event event = new Event.Builder().title("daily stand-up").startDate(LocalDateTime.of(2015, 10, 10, 15, 0)).endDate(LocalDateTime.of(2015, 10, 10, 16, 0)).attenders(devs).build();
         List<Event> eventList = Collections.singletonList(event);
         when(dataStore.getEventsByTitle("daily stand-up")).thenReturn(eventList);
-        Assert.assertEquals(eventList, calendarService.getEventsByTitle("daily stand-up"));
+        //local code review (vtegza): assert variable instead of inline call @ 11.10.15
+        List<Event> eventsByTitle = calendarService.getEventsByTitle("daily stand-up");
+        Assert.assertEquals(eventList, eventsByTitle);
     }
 
     @Test
-    public void testGetEventsByTitleDoesntReturnEvents(){
+    public void testGetEventsByTitleDoesntReturnEvents() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");
@@ -75,17 +84,20 @@ public class CalendarServiceImplTest {
         Event event = new Event.Builder().title("daily stand-up").startDate(LocalDateTime.of(2015, 10, 10, 15, 0)).endDate(LocalDateTime.of(2015, 10, 10, 16, 0)).attenders(devs).build();
         List<Event> eventList = Collections.singletonList(event);
         when(dataStore.getEventsByTitle("daily stand-up")).thenReturn(eventList);
+        //local code review (vtegza): assert variable instead of inline call @ 11.10.15
         Assert.assertNotEquals(eventList, calendarService.getEventsByTitle("stand-up"));
     }
 
     @Test
-    public void testGetEventsForSpecificDate(){
+    public void testGetEventsForSpecificDate() {
+        //local code review (vtegza): assert rteturn value with when mock prepare instead of verify @ 11.10.15
+        //local code review (vtegza): if tou need, you can reset mock with reset(mock) @ 11.10.15
         calendarService.getEventsForSpecificDate(LocalDateTime.of(2015, 10, 13, 12, 0));
         verify(dataStore).getEventsForSpecificDate(LocalDateTime.of(2015, 10, 13, 12, 0));
     }
 
     @Test
-    public void testGetEventsForSpecificDateReturnsEvents(){
+    public void testGetEventsForSpecificDateReturnsEvents() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");
@@ -97,7 +109,7 @@ public class CalendarServiceImplTest {
     }
 
     @Test
-    public void testGetEventsForSpecificDateDoesntReturnEvents(){
+    public void testGetEventsForSpecificDateDoesntReturnEvents() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");

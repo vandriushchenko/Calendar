@@ -5,18 +5,24 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CalendarDataStore {
+
+    //local code review (vtegza): look into google guava - it has collections <Key, List/Set<Value>> @ 11.10.15
+    //local code review (vtegza): could be final @ 11.10.15
     private Map<UUID, List<String>> idWithEmails = new HashMap<>();
     private Map<String, List<UUID>> titleWithId = new HashMap<>();
     private Map<UUID, Event> events = new HashMap<>();
 
+    //local code review (vtegza): remove or make package local if used for test @ 11.10.15
     Map<UUID, List<String>> getIdWithEmails() {
         return idWithEmails;
     }
 
+    //local code review (vtegza): remove or make package local if used for test @ 11.10.15
     Map<String, List<UUID>> getTitleWithId() {
         return titleWithId;
     }
 
+    //local code review (vtegza): remove or make package local if used for test @ 11.10.15
     Map<UUID, Event> getEvents() {
         return events;
     }
@@ -49,6 +55,7 @@ public class CalendarDataStore {
                 .attenders(attenders)
                 .startDate(startDate)
                 .endDate(endDate)
+                //local code review (vtegza): create id here: .id(UUID.generateRandomUUID()) @ 11.10.15
                 .build());
     }
 

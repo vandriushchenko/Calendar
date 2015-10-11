@@ -12,6 +12,7 @@ public class Event implements Serializable{
     private final List<Attender> attenders;
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
+    //local code review (vtegza): do not generate inside Event, set it as any other fields @ 11.10.15
     private final UUID id = UUID.randomUUID();
 
     private Event(Builder builder){
