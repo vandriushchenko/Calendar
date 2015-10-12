@@ -34,7 +34,6 @@ public class CalendarServiceImplTest {
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
         Attender user3 = new Attender("Ihor", "Kovalenko", "ikovalenko@gmail.com");
         List<Attender> devs = Arrays.asList(user1, user2, user3);
-        //local code review (vtegza): keep line short @ 11.10.15
         Event event = new Event.Builder()
                 .title("developers' code review")
                 .startDate(LocalDateTime.of(2015, 10, 10, 15, 0))
@@ -56,12 +55,6 @@ public class CalendarServiceImplTest {
     }
 
     @Test
-    public void testGetEventsByTitleDelegating() {
-        calendarService.getEventsByTitle("daily stand-up");
-        verify(dataStore).getEventsByTitle("daily stand-up");
-    }
-
-    @Test
     public void testGetEventsByTitleReturnsEvents() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
@@ -70,7 +63,6 @@ public class CalendarServiceImplTest {
         Event event = new Event.Builder().title("daily stand-up").startDate(LocalDateTime.of(2015, 10, 10, 15, 0)).endDate(LocalDateTime.of(2015, 10, 10, 16, 0)).attenders(devs).build();
         List<Event> eventList = Collections.singletonList(event);
         when(dataStore.getEventsByTitle("daily stand-up")).thenReturn(eventList);
-        //local code review (vtegza): assert variable instead of inline call @ 11.10.15
         List<Event> eventsByTitle = calendarService.getEventsByTitle("daily stand-up");
         Assert.assertEquals(eventList, eventsByTitle);
     }
@@ -84,8 +76,8 @@ public class CalendarServiceImplTest {
         Event event = new Event.Builder().title("daily stand-up").startDate(LocalDateTime.of(2015, 10, 10, 15, 0)).endDate(LocalDateTime.of(2015, 10, 10, 16, 0)).attenders(devs).build();
         List<Event> eventList = Collections.singletonList(event);
         when(dataStore.getEventsByTitle("daily stand-up")).thenReturn(eventList);
-        //local code review (vtegza): assert variable instead of inline call @ 11.10.15
-        Assert.assertNotEquals(eventList, calendarService.getEventsByTitle("stand-up"));
+        List<Event> eventsByTitle = calendarService.getEventsByTitle("stand-up");
+        Assert.assertNotEquals(eventList, eventsByTitle);
     }
 
     @Test

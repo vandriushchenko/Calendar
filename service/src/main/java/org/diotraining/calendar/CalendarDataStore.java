@@ -12,17 +12,14 @@ public class CalendarDataStore {
     private Map<String, List<UUID>> titleWithId = new HashMap<>();
     private Map<UUID, Event> events = new HashMap<>();
 
-    //local code review (vtegza): remove or make package local if used for test @ 11.10.15
     Map<UUID, List<String>> getIdWithEmails() {
         return idWithEmails;
     }
 
-    //local code review (vtegza): remove or make package local if used for test @ 11.10.15
     Map<String, List<UUID>> getTitleWithId() {
         return titleWithId;
     }
 
-    //local code review (vtegza): remove or make package local if used for test @ 11.10.15
     Map<UUID, Event> getEvents() {
         return events;
     }
@@ -75,7 +72,6 @@ public class CalendarDataStore {
     private void addEmailsMapping(Event event) {
         if (idWithEmails.containsKey(event.getId())) {
             List<String> emails = new ArrayList<>(idWithEmails.get(event.getId()));
-            //local code review (vtegza): break to several lines @ 12.10.15
             emails.addAll(event.getAttenders().stream()
                     .map(Attender::getEmail)
                     .collect(Collectors.toList()));

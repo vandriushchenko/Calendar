@@ -2,7 +2,7 @@ package org.diotraining.calendar;
 
 import java.io.Serializable;
 
-public class Attender implements Comparable<Attender>, Serializable {
+public class Attender implements Serializable {
     private String name;
     private String surname;
     private String email;
@@ -67,12 +67,5 @@ public class Attender implements Comparable<Attender>, Serializable {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
-
-    //local code review (vtegza): remove or implement @ 12.10.15
-    @Override
-    public int compareTo(Attender o) {
-        return 0;
-    }
-
 
 }
