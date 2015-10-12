@@ -89,14 +89,6 @@ public class CalendarServiceImplTest {
     }
 
     @Test
-    public void testGetEventsForSpecificDate() {
-        //local code review (vtegza): assert rteturn value with when mock prepare instead of verify @ 11.10.15
-        //local code review (vtegza): if tou need, you can reset mock with reset(mock) @ 11.10.15
-        calendarService.getEventsForSpecificDate(LocalDateTime.of(2015, 10, 13, 12, 0));
-        verify(dataStore).getEventsForSpecificDate(LocalDateTime.of(2015, 10, 13, 12, 0));
-    }
-
-    @Test
     public void testGetEventsForSpecificDateReturnsEvents() {
         Attender user1 = new Attender("Volodymyr", "Kosovsky", "vkosovsky@gmail.com");
         Attender user2 = new Attender("Andriy", "Haysan", "ahaysan@gmail.com");
